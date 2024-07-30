@@ -1,17 +1,25 @@
-import React from "react";
-import AlbumList from "./components/albumList/AlbumList";
-import AlbumForm from "./components/albumForm/AlbumForm";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import AlbumForm from "./components/AlbumForm";
+import AlbumList from "./components/AlbumList";
+import './App.css';
 
-
-
-export const App = () => {
-  return (
-    <div className="App">
-        <h1>Discografia de Tião Carreiro e Pardinho</h1>
-        <AlbumForm />
-        <AlbumList />
-    </div>
+const App = () => {
+  return(
+    <Router>
+      <div className="App">
+        <Header/>
+        <SearchBar/>
+        <Routes>
+          <Route path="/" element={<AlbumList/>}/>
+          <Route path="/add" element={<AlbumForm/>}/>
+          <Route path="/albums" element={<AlbumList/>}/>
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
 export default App;
+          
